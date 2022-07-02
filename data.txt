@@ -1,0 +1,93 @@
+Yayasan Hurip Bagja Gasanka
+yayasan hurip bagja gasanka
+yayasan-hurip-bagja-gasanka
+
+
+=== KODE WARNA =====
+Orange: #EE722A;
+Orange Light: #F8D8CD;
+Green: #289673;
+Blue: #43AAFF;
+
+=== KEBUTUHAN HALAMAN =====
+
+Beranda
+	- Slider
+	- Yayasan ini berfokus pada
+	- Pengurus
+	- Kabar Terbaru
+
+Tentang
+	Visi dan Misi
+		- Teks
+	Arti Nama Yayasan
+		- Teks
+	Struktur Pengurus
+		- Gambar
+	Fasilitas
+		- Teks
+
+Program
+	- Teks
+
+Galeri
+	- Gambar
+
+Kontak
+	- Form
+
+Kabar
+	- Berita
+
+
+=== KEBUTUHAN DATABASE =====
+
+data_admin
+pengaturan
+page
+sub_sitemap
+sitemap
+galeri_judul
+	id_galeri_judul
+	judul
+	slug
+	tgl_update
+galeri
+	id_galeri
+	id_galeri_judul
+	ket
+	gambar
+	tgl_update
+kabar
+	id_kabar
+	judul
+	gambar
+	deskripsi
+	seo
+	slug
+	keyword
+	description
+	views
+	tgl_terbit
+	tgl_update
+	id_sitemap
+pesan
+	id_pesan
+	nama
+	email
+	pesan
+	status (Read, Unread)
+	tgl_update
+
+
+=== KEBUTUHAN PLUGINS =====
+
+	- Bootstrap 5
+	- Fontawesome 5 & 6
+	- Froala
+	- Datatables
+	- Slick JS
+	- SweetAlert2
+	- Clipboard JS
+	- Komentar via Facebook
+	- Magnific Popup

@@ -1,0 +1,65 @@
+##### Enable mod_rewrite ###############################
+Options -Indexes +FollowSymLinks
+RewriteEngine On
+
+##### Add Trailing Slash ###############################
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+
+##### Redirect HTTP ###############################
+RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI}/ [R=301,L]
+
+##### Redirect HTTPS ###############################
+#RewriteCond %{HTTPS} !=on
+
+##### Only www ###############################
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}/ [R=301,L]
+
+##### Not use www ###############################
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}/ [R=301,L]
+
+##### Handle my links ###############################
+RewriteRule ^$ template.php?module=home&id=1 [L]
+
+RewriteRule ^visi-dan-misi/$ template.php?module=tentang&id=2 [L]
+RewriteRule ^arti-nama-yayasan/$ template.php?module=tentang&id=3 [L]
+RewriteRule ^struktur-pengurus/$ template.php?module=tentang&id=4 [L]
+RewriteRule ^fasilitas/$ template.php?module=tentang&id=5 [L]
+
+RewriteRule ^program/$ template.php?module=program&id=6 [L]
+
+RewriteRule ^galeri/$ template.php?module=galeri&id=7 [L]
+RewriteRule ^galeri/page/([0-9]+)/$ template.php?module=galeri&id=7&page=$1 [L]
+
+RewriteRule ^kontak/$ template.php?module=kontak&id=8 [L]
+
+RewriteRule ^kabar/$ template.php?module=kabar&id=9&act=list [L]
+RewriteRule ^kabar/page/([0-9]+)/$ template.php?module=kabar&id=9&act=list&page=$1 [L]
+RewriteRule ^kabar/([a-z0-9-]+)/$ template.php?module=kabar&id=9&act=read&slug=$1 [L]
+
+RewriteRule ^sendSaran/$ appweb/Controllers/Kontak.php [L]
+
+RewriteRule ^404/$ appweb/Views/404.php [L]
+RewriteRule ^403/$ appweb/Views/403.php [L]
+RewriteRule ^500/$ appweb/Views/500.php [L]
+RewriteRule ^400/$ appweb/Views/400.php [L]
+RewriteRule ^401/$ appweb/Views/401.php [L]
+
+##### Deny access to htaccess ###############################
+<files .htaccess>
+    order allow,deny
+    deny from all
+</files>
+
+##### Not Found ###############################
+ErrorDocument 404 /appweb/Views/404.php
+##### Forbidden ###############################
+ErrorDocument 403 /appweb/Views/403.php
+##### Internal Server Error
+ErrorDocument 500 /appweb/Views/500.php
+##### Bad Request ###############################
+ErrorDocument 400 /appweb/Views/400.php
+##### Unauthorised ###############################
+ErrorDocument 401 /appweb/Views/401.php
